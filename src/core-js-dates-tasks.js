@@ -222,13 +222,15 @@ function getNextFridayThe13th(date) {
   const monthOffset = day >= 13 ? -1 : 0;
   let count = 0;
 
-  while (true) {
+  while (count < 100) {
     const newDate = new Date(year, month + monthOffset + count, 13);
     if (newDate.getDay() === 5) {
       return newDate;
     }
     count += 1;
   }
+
+  throw new Error('Out of max tries');
 }
 
 /**
